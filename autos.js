@@ -9,13 +9,6 @@ let autos= [
         anio: 2019,
         patente: "APL123",
         vendido: false,
-        buscarAuto: function(patente) {
-            if (this.patente=== patente) {
-                return this.marca;
-            } else {
-                return null;
-            };
-        }
     },
     {
         marca: "Toyota",
@@ -27,15 +20,6 @@ let autos= [
         anio: 2019,
         patente: "JJK116",
         vendido: false,
-        buscarAuto: function (patente) {
-            if (this.patente=== patente) {
-                return this.marca;
-            } else {
-                return null;
-            };
-        }
     }
 ]
 module.exports= autos;
-
-console.log(typeof buscarAuto);
