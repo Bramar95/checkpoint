@@ -1,3 +1,94 @@
+const autos = require("./autos");
+
+let concesionaria = {
+	autos: autos,
+
+	buscarAuto: function (patente) {
+   for (let i = 0; i < this.autos.length; i++){
+      if (this.autos[i].patente === patente){
+         return this.autos[i]
+      } 
+   }
+   	return null
+	},
+
+	venderAuto: function (patente) {
+		console.log('Completar este método');
+	},
+
+	autosParaLaVenta: function () {
+		console.log('Completar este método');
+	},
+
+	autosNuevos: function () {
+		console.log('Completar este método');
+	},
+
+	listaDeVentas: function () {
+		console.log('Completar este método');
+	},
+
+	totalDeVentas: function () {
+		console.log('Completar este método');
+	},
+
+	puedeComprar: function (unAuto, unaPersona) {
+		console.log('Completar este método');
+	},
+
+	autosQuePuedeComprar: function (unaPersona) {
+		console.log('Completar este método');
+	},
+
+	autosNuevos: function(){
+		console.log('Completar este método');
+	} 
+}
+
+
+// Pruebas
+
+// Esta persona les servirá para probar los métodos: puedeComprar y autosQuePuedeComprar
+const fulanita = {
+	capacidadDePagoTotal: 230000,
+	capacidadDePagoEnCuotas: 14000,
+}
+
+
+// 1. buscarAuto
+console.log(concesionaria.buscarAuto('ABC123'));
+console.log(concesionaria.buscarAuto('JJK116'));
+console.log(concesionaria.buscarAuto('AUTOFALSO'));
+
+// 2. venderAuto
+console.log(concesionaria.venderAuto());
+
+// 3. autosParaLaVenta
+console.log(concesionaria.autosParaLaVenta());
+
+// 4. autosNuevos
+console.log(concesionaria.autosNuevos());
+
+// 5. listaDeVentas
+console.log(concesionaria.listaDeVentas());
+
+// 6. totalDeVentas
+console.log(concesionaria.totalDeVentas());
+
+// 7. puedeComprar
+console.log(concesionaria.puedeComprar());
+
+// 8. autoQuePuedeComprar
+console.log(concesionaria.autoQuePuedeComprar());
+
+// 9. autosNuevos
+console.log(concesionaria.autosNuevos())
+
+
+
+
+
+
 //María presenta al equipo un nuevo proyecto para una concesionaria de automóviles, cuya principal línea de negocios es la compra y venta de automóviles. La concesionaria necesita construir una lista con todos los vehículos que tiene registrados. Por cada vehículo necesita conocer la siguiente información:
 
 //¡Al fin es momento de codear!
