@@ -23,3 +23,13 @@ let autos= [
     }
 ]
 module.exports= autos;
+
+/*puedeComprar: function(unAuto, unaPersona){
+    let valorDeCuota = unAuto.precio / unAuto.cuotas;
+        if (unaPersona.capacidadDePagoEnCuotas >= valorDeCuota && unaPersona.capacidadDePagoTotal >= unAuto.precio){
+            return true
+       }  
+       else {
+           return false
+       }  
+       }*/

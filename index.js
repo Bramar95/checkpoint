@@ -1,7 +1,8 @@
 let autos= require("./autos");
-
+let personas= require("./personas");
 let concesionaria = {
     autos: autos,
+    personas: personas,
     buscarAuto: function (patente) {
          for (i= 0; i<autos.length; i++) {
              if (this.autos[i].patente===patente) {
@@ -17,17 +18,17 @@ let concesionaria = {
      let autosAVender= this.autos.filter(auto => auto.vendido===false);
      return autosAVender;
     },
-    autosNuevos (){
-        let autosDisponibles= this.autosParaLaVenta();
+    autosNuevos: function(){
+        let autosDisponibles= this.autosParaLaVenta();//para guardar en una variable lo que una funcion retorna se la debe ejecutar con parentesis
         let autos0KM= autosDisponibles.filter(autos=> autos.km<100);
         return autos0KM;
     },
-    listaDeVentas() {
+    listaDeVentas: function() {
       let autosVendidos= this.autos.filter(autos=> autos.vendido);
       let listaDePrecios= autosVendidos.map (auto=>auto.precio)//Map se usa para transformar los valores de una propiedad a lo largo de un array volcandolos en otro array
                return listaDePrecios
            },
-    totalDeVentas() {
+    totalDeVentas: function() {
         let listaVentas= this.listaDeVentas();
         let sumaTotalVentas= listaVentas.reduce((acum, precio)=> acum + precio, 0);//Si los parametros del metodos son mas de uno no olvidar declararlos entre parentesis
         return sumaTotalVentas;//Si el array al que se le aplica el reduce no tiene elementos, en la condicion o logica del metodo luego de una coma se debe especificar que el valode acum empieza en 0
@@ -46,12 +47,22 @@ let concesionaria = {
         }
         */
         puedeComprar (auto, persona) {//El parametro auto y persona se reemplaza luego con los datos que pone el usuario y se convierte en el objeto entero
-            let condicionA= persona.capacidadDePagoTotal>= auto.precio;
-            let condicionB= (persona.capacidadDePagoEncuotas)>=(auto.precio/auto.cuota);
-            let puedeComprar= (condicionA && condicionB); 
-            puedeComprar? true: false;
+            let valorDeCuota = auto.precio / auto.cuotas;
+            let condicionSolvenciaPrecio= persona.capacidadDePagoTotal >= auto.precio;
+            let condicionSolvenciaPagoEnCuotas= persona.capacidadDePagoEnCuotas >= valorDeCuota;
+            let puedeComprar= condicionSolvenciaPrecio && condicionSolvenciaPagoEnCuotas;
+                if (puedeComprar){
+                    return true;
+            }
+            else {
+                return false;
+            };
+        },
+       autosQuePuedeComprar: function (persona) {
+           let listaDeDisponibles= this.autosParaLaVenta()
+           let autosQuePuedeComprar= listaDeDisponibles.filter(this.puedeComprar)
+           return autosQuePuedeComprar;
         }
-
 };
 // 7. puedeComprar
-console.log(concesionaria.puedeComprar("Toyota", "Juan"));
+console.log(concesionaria.autosQuePuedeComprar("Damián"));
