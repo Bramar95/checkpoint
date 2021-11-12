@@ -38,11 +38,7 @@ let concesionaria = {
 
 	autosQuePuedeComprar: function (unaPersona) {
 		console.log('Completar este método');
-	},
-
-	autosNuevos: function(){
-		console.log('Completar este método');
-	} 
+	}
 }
 
 
