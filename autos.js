@@ -2,8 +2,8 @@ let autos= [
     {
         marca: "Ford",
         modelo: "Fiesta",
-        precio: "150000",
-        km: "200",
+        precio: 150000,
+        km: 200,
         color: "azul",
         cuotas: 12,
         anio: 2019,
@@ -13,8 +13,8 @@ let autos= [
     {
         marca: "Toyota",
         modelo: "Corolla",
-        precio: "100000",
-        km: "0",
+        precio: 100000,
+        km: 0,
         color: "blanco",
         cuotas: 14,
         anio: 2019,
