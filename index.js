@@ -8,11 +8,11 @@ let concesionaria = {
              if (this.autos[i].patente===patente) {
                 return this.autos[i];
              }
-        }
+        } return null;//error que se arrastraba al declarar al null como un else dentro de la iteracion del array; al dar falso en una iteracion pasaba al else 
     },
     venderAuto: function(patente) {
-        let autoEncontrado= this.buscarAuto(patente).vendido=true;
-        return autoEncontrado;
+        let autoEncontrado= this.buscarAuto(patente).vendido=true;//se debe ejecutar la funcion para que busque el objeto auto segun el parametro patente, una vez hecho a ese objeto se le cambia o reasigna el valor del atributo vendido como true en este caso 
+        return autoEncontrado;//no confundir comparar valores(=== o ==) con reasignar o asignar valores(=)
     },
     autosParaLaVenta: function() {
      let autosAVender= this.autos.filter(auto => auto.vendido===false);
@@ -60,8 +60,8 @@ let concesionaria = {
         },
        autosQuePuedeComprar: function (persona) {
            let listaDeDisponibles= this.autosParaLaVenta()
-           let autosQuePuedeComprar= listaDeDisponibles.filter(this.puedeComprar)
-           return autosQuePuedeComprar;
+           let autosQuePuedeComprar= listaDeDisponibles.filter(auto=> this.puedeComprar(auto, persona));//llamamos la funcion puede comprar y como argumento le pasamos el elemento del array que estamos iterando junto al parametro de lafuncioin padre
+           return autosQuePuedeComprar//el elemento que recibe la funcion anonima del filter es aquel elemento en que la funcion va iterar y lo va a agregar al nuevo array segun se cumpla el predicaco o no
         }
 };
 // 7. puedeComprar
